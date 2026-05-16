@@ -1,0 +1,61 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { Container } from "@/components/shared/Container";
+import { WordStaggerHeading } from "@/components/shared/WordStaggerHeading";
+
+export function AboutHero() {
+  return (
+    <section className="relative isolate overflow-hidden bg-ink text-white">
+      <div className="absolute inset-0 hero-gradient" aria-hidden="true" />
+      <div className="absolute inset-0 noise-overlay" aria-hidden="true" />
+      <div
+        className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-ink/60"
+        aria-hidden="true"
+      />
+
+      <Container
+        size="wide"
+        className="relative z-10 pt-36 sm:pt-44 pb-24 sm:pb-32 lg:pt-52"
+      >
+        <motion.p
+          className="text-xs uppercase tracking-label font-semibold text-amber mb-6"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          About
+        </motion.p>
+
+        <WordStaggerHeading
+          text="The person behind the systems."
+          className="text-white text-5xl sm:text-6xl lg:text-7xl xl:text-[5rem] max-w-4xl"
+          as="h1"
+        />
+
+        <motion.p
+          className="mt-8 text-lg sm:text-xl text-white/75 max-w-xl"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 1.0, ease: [0.22, 1, 0.36, 1] }}
+        >
+          Solo founder. Self-taught. Building in public.
+        </motion.p>
+      </Container>
+
+      <div className="relative z-10">
+        <svg
+          className="block w-full h-12 sm:h-16 text-cream"
+          viewBox="0 0 1200 60"
+          preserveAspectRatio="none"
+          aria-hidden="true"
+        >
+          <path
+            d="M0,30 C300,55 600,5 900,30 C1050,42 1150,55 1200,55 L1200,60 L0,60 Z"
+            fill="currentColor"
+          />
+        </svg>
+      </div>
+    </section>
+  );
+}
