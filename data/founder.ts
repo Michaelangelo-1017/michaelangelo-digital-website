@@ -9,7 +9,6 @@ export type FounderField = { label: string; value: string };
 
 export const FOUNDER: FounderField[] = [
   { label: "Name", value: "Michaelangelo Agbodike" },
-  { label: "Age", value: "22" },
   { label: "Based in", value: "England, UK" },
   {
     label: "When he builds",
