@@ -54,7 +54,7 @@ export function FounderProfile() {
           </div>
 
           <div className="lg:col-span-5 order-1 lg:order-2 lg:sticky lg:top-24">
-            <ImageReveal className="relative rounded-3xl border-4 border-navy aspect-[4/5] bg-navy/5">
+            <ImageReveal className="relative rounded-3xl border-4 border-amber-500 aspect-[4/5] bg-navy/5">
               <Image
                   src="/images/founder.jpg"
                   alt="Michaelangelo Agbodike, founder of Michaelangelo Digital"

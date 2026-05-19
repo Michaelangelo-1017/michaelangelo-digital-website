@@ -65,12 +65,12 @@ export function OriginStory() {
               Founder photo: add a file at public/images/founder.jpg (or change src below).
               Use a 4:5-oriented portrait; object-cover fills the frame inside the navy border.
             */}
-            <ImageReveal className="rounded-3xl border-2 border-navy aspect-[4/5] bg-navy/40">
+            <ImageReveal className="rounded-3xl border-2 border-amber-500 aspect-[4/5] bg-navy/40">
               <Image
                 src="/images/founder.jpg"
                 alt="Michaelangelo Agbodike, founder of Michaelangelo Digital"
                 fill
-                className="object-cover object-center"
+                className="object-cover object-center rounded-3xl"
                 sizes="(max-width: 1024px) 100vw, 38vw"
                 priority={false}
               />
