@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/shared/Container";
 import { FadeInView } from "@/components/shared/FadeInView";
 import type { CaseStudy } from "@/data/caseStudies";
 import { fadeUp, VIEWPORT_ONCE } from "@/lib/animations";
 import { cn } from "@/lib/utils";
+import { Button } from "../ui/button";
 
 type CaseStudyDetailProps = {
   study: CaseStudy;
@@ -132,6 +133,24 @@ export function CaseStudyDetail({ study }: CaseStudyDetailProps) {
             body={study.result}
             variant="light"
           />
+          <Container size="narrow">
+            <div className="mt-10 flex justify-center">
+              <Link
+                href={study.link}
+                className="inline-flex items-center gap-2 text-xs uppercase tracking-label font-semibold text-ink hover:text-white transition mb-10"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  variant="amber"
+                  size="default"
+                  className="inline-flex items-center gap-2 text-sm uppercase tracking-label font-semibold text-white hover:text-white transition duration-300"
+                >
+                  See The System In Action <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Button>
+              </Link>  
+            </div>
+          </Container>
         </Container>
       </section>
     </>

@@ -18,6 +18,7 @@ export type CaseStudy = {
   problem: string;
   onboarding: string;
   result: string;
+  link: string;
 };
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -35,6 +36,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     onboarding:
       "The client was onboarded via an in-person meeting where we discussed their business and their needs. We then built a custom quote form that was integrated with their existing website.",
     result: "The client now has a fully automated quote pipeline that allows them to focus on growing their business rather than chasing enquiries.",
+    link: "https://www.komiklean.com/contact",
   },
   {
     slug: "ampsac",
@@ -51,6 +53,24 @@ export const CASE_STUDIES: CaseStudy[] = [
       "To be added once permission is confirmed.",
     result:
       "The website was rebuilt while salvaging the existing content, redeployed for free, and the domain was reconnected successfully. The site is now live, faster than the original, and costs the client nothing in hosting.",
+    link: "https://www.ampsaccleaning.com/",
+  },
+  {
+    slug: "ampsac-city",
+    number: 3,
+    clientName: "AMPSAC City Clean",
+    status: "Live",
+    industry: "Cleaning",
+    serviceDelivered: "BJS Done For You Install",
+    summary:
+      "From basic contact form to a fully automated quote pipeline built for a newly established cleaning company owner.",
+    problem:
+      "Their enquiry process was entirely manual with no system to capture or follow up on quote requests.",
+    onboarding:
+      "The client was onboarded via an in-person meeting where we discussed their business and their needs. We then built a custom quote form that was integrated with their existing website.",
+    result:
+      "The client now has a fully automated quote pipeline that allows them to focus on growing their business rather than chasing enquiries.",
+    link: "https://www.ampsaccleaning.com/contact",
   },
 ];
 
