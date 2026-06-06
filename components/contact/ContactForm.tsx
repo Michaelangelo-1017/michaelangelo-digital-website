@@ -9,7 +9,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { FadeInView } from "@/components/shared/FadeInView";
 
-const N8N_WEBHOOK_URL = "https://n8n.michaelangelo-digital.co.uk/webhook/michaelangelo-digital/contact";
+const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_CONTACT_WEBHOOK_URL ?? "";
 
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
