@@ -79,10 +79,10 @@ export const COMPLETED_MILESTONES: CompletedMilestone[] = [
     description: "Momentum building.",
   },
   {
-    id: "first-bjs-install",
+    id: "first-automation-install",
     date: "14 May 2026",
     shortDate: "May 14, 2026",
-    title: "First BJS Install Completed",
+    title: "First Automation System Install Completed",
     description:
       "The system went live for a real client for the first time.",
   },
@@ -96,10 +96,10 @@ export const COMPLETED_MILESTONES: CompletedMilestone[] = [
 ];
 
 export const FUTURE_MILESTONES: FutureMilestone[] = [
-  { id: "second-bjs-install", title: "2nd BJS Install" },
-  { id: "tier-1-completed", title: "Tier 1 Installs Completed" },
-  { id: "tier-2-completed", title: "Tier 2 Installs Completed (4 to 7)" },
-  { id: "tier-3-completed", title: "Tier 3 Installs Completed (8 to 10)" },
+  { id: "second-automation-install", title: "2nd Automation System Install" },
+  { id: "tier-1-completed", title: "First 3 System Installs Completed" },
+  { id: "tier-2-completed", title: "System Installs 4 to 7 Completed" },
+  { id: "tier-3-completed", title: "System Installs 8 to 10 Completed" },
   { id: "yt-1k", title: "First 1K YouTube Subscribers" },
   { id: "saas-launch", title: "SaaS Platform Launch" },
   { id: "yt-10k", title: "10K YouTube Subscribers" },

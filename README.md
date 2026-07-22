@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This repository contains the marketing website for **Michaelangelo Digital**, the automation-and-web studio founded by Michaelangelo Agbodike in Luton, England. It speaks directly to **UK small business owners** — especially cleaning operators — who want **enquiry automation** (the Booked Job System) and **fast, credible websites** without drowning in admin.
+This repository contains the marketing website for **Michaelangelo Digital**, the automation-and-web studio founded by Michaelangelo Agbodike in Luton, England. It speaks directly to **UK small business owners** — especially cleaning operators — who want **operations systems**, **compliance tooling**, and **fast, credible websites** without drowning in admin.
 
 Live domain: **[michaelangelo-digital.co.uk](https://www.michaelangelo-digital.co.uk)**.
 
@@ -12,11 +12,11 @@ What each route delivers:
 | --- | --- |
 | **[Home](app/page.tsx)** (`/`) | Full marketing narrative — hero, offer cards, origin story, social proof, milestones teaser, testimonial placeholders, final booking call-to-action. |
 | **[About](app/about/page.tsx)** (`/about`) | Founder profile, expanded origin story, full milestones SVG timeline (completed + coming soon). |
-| **[Services](app/services/page.tsx)** (`/services`) | Booked Job System pricing and DIY tiering; icon checklist of automations; website design pricing + bundle note. |
+| **[Services](app/services/page.tsx)** (`/services`) | Operations Systems Assessment Call, CarePath360, and website design pricing. |
 | **[Case Studies](app/case-studies/page.tsx)** (`/case-studies`) | Index of live client stories linking through to editorial detail pages. |
-| **[Komiklean](app/case-studies/komiklean/page.tsx)** (`/case-studies/komiklean`) | BJS install — problem solved + placeholders awaiting permission. |
+| **[Komiklean](app/case-studies/komiklean/page.tsx)** (`/case-studies/komiklean`) | Enquiry automation install — problem solved + placeholders awaiting permission. |
 | **[AMPSAC](app/case-studies/ampsac/page.tsx)** (`/case-studies/ampsac`) | Website rebuild — detailed outcome paragraph plus onboarding placeholder. |
-| **[Contact](app/contact/page.tsx)** (`/contact`) | Formspree contact form + phone/email/WhatsApp + Calendly embed. |
+| **[Contact](app/contact/page.tsx)** (`/contact`) | n8n-backed contact form + phone/email/WhatsApp + Calendly embed. |
 | **[Book](app/book/page.tsx)** (`/book`) | Full-height Calendly booking focused entirely on scheduling a free call. |
 | **[Content](app/content/page.tsx)** (`/content`) | Latest YouTube uploads grid (`@MichaelangeloBuilds`) and LinkedIn call-to-action section.
 
@@ -36,7 +36,7 @@ Shared chrome (**Navbar**, **Footer**, session-aware loading splash, cross-route
 | **shadcn/ui-style primitives** | n/a (hand-built) | Accessible UI atoms (`Button`, `Input`, `Textarea`, `Label`) built from Radix + `class-variance-authority`, mirroring shadcn conventions. |
 | **next/font** | built-in | Fraunces + Inter loaded from Google Fonts via [`app/layout.tsx`](app/layout.tsx). |
 | **YouTube Data API v3** | HTTP REST | [`lib/youtube.ts`](lib/youtube.ts) resolves `@MichaelangeloBuilds`, pulls six newest uploads (ISR cache ~6h). |
-| **Formspree** | hosted forms | [`ContactForm`](components/contact/ContactForm.tsx) POSTs JSON payloads over HTTPS. |
+| **n8n** | webhook | [`/api/contact`](app/api/contact/route.ts) validates and forwards contact payloads server-side. |
 | **Calendly** | hosted scheduler | Inline iframe embed via [`CalendlyEmbed`](components/contact/CalendlyEmbed.tsx). |
 | **Vercel** | platform | Recommended hosting & CI/CD for Next.js (Edge-friendly builds). |
 
@@ -84,7 +84,7 @@ Annotated tree (everything currently committed — create `public/` locally when
 │   ├── about/                  # Founder story + milestones SVG artwork.
 │   ├── services/               # Pricing tables + feature grids.
 │   ├── case-studies/           # Listing grid + editorial detail layout.
-│   ├── contact/                # Hero, Formspree form, Calendly embed, contact rails.
+│   ├── contact/                # Hero, contact form, Calendly embed, contact rails.
 │   ├── content/                # Hero, YouTube grid + LinkedIn promo section.
 │   └── book/                   # Dedicated booking hero stack.
 ├── data/
@@ -92,7 +92,7 @@ Annotated tree (everything currently committed — create `public/` locally when
 │   ├── milestones.ts           # Completed timeline rows + future dashed milestones.
 │   ├── testimonials.ts         # Placeholder quotes until real clients approve copy.
 │   ├── founder.ts              # Label/value rows rendered on About.
-│   ├── services.ts             # BJS tiers + DIY uplift copy + website bundle note.
+│   ├── services.ts             # Assessment steps + CarePath360 copy + website pricing.
 │   └── caseStudies.ts          # Komiklean + AMPSAC editorial sections.
 ├── lib/
 │   ├── animations.ts           # Central Framer Motion variants + viewport presets.
@@ -122,8 +122,8 @@ Annotated tree (everything currently committed — create `public/` locally when
 ### Services — [`app/services/page.tsx`](app/services/page.tsx)
 
 - **Route:** `/services`
-- **Summary:** Deep dive on Booked Job System (dual cards + tier table + pulsing scarcity badge) followed by automated workflow bullets and website offering sidebar with bundle savings call-out.
-- **Components:** [`ServicesHero`](components/services/ServicesHero.tsx), [`BookedJobSystem`](components/services/BookedJobSystem.tsx), [`PricingTable`](components/services/PricingTable.tsx), [`SystemFeaturesList`](components/services/SystemFeaturesList.tsx), [`WebsiteBuildSection`](components/services/WebsiteBuildSection.tsx), [`FinalCTA`](components/home/FinalCTA.tsx).
+- **Summary:** Operations Systems Assessment Call (apply → call → report walkthrough), CarePath360 compliance platform, and website offering with from-pricing sidebar.
+- **Components:** [`ServicesHero`](components/services/ServicesHero.tsx), [`OperationsSystemsAssessment`](components/services/OperationsSystemsAssessment.tsx), [`CarePath360`](components/services/CarePath360.tsx), [`WebsiteBuildSection`](components/services/WebsiteBuildSection.tsx), [`FinalCTA`](components/home/FinalCTA.tsx).
 - **Data / APIs:** [`data/services.ts`](data/services.ts). No remote APIs.
 
 ### Case Studies index — [`app/case-studies/page.tsx`](app/case-studies/page.tsx)
@@ -150,9 +150,9 @@ Annotated tree (everything currently committed — create `public/` locally when
 ### Contact — [`app/contact/page.tsx`](app/contact/page.tsx)
 
 - **Route:** `/contact`
-- **Summary:** Split grid — Formspree-powered lead capture vs stacked contact channels + inline Calendly card.
+- **Summary:** Split grid — server-proxied lead capture vs stacked contact channels + inline Calendly card.
 - **Components:** [`ContactHero`](components/contact/ContactHero.tsx), [`ContactForm`](components/contact/ContactForm.tsx), [`ContactDetailsPanel`](components/contact/ContactDetails.tsx) (includes [`CalendlyEmbed`](components/contact/CalendlyEmbed.tsx)), [`Container`](components/shared/Container.tsx), [`FinalCTA`](components/home/FinalCTA.tsx).
-- **Data / APIs:** Client-side `fetch` to Formspree (`https://formspree.io/f/YOUR_ID` until replaced). Calendly iframe hits Calendly CDN.
+- **Data / APIs:** Client posts to [`/api/contact`](app/api/contact/route.ts), which forwards to n8n via `N8N_CONTACT_WEBHOOK_URL`. Calendly iframe uses `CONTACT_DETAILS.calendly`.
 
 ### Book — [`app/book/page.tsx`](app/book/page.tsx)
 
@@ -194,7 +194,7 @@ Paths below are root-relative markdown links so you can jump straight into the s
 
 ### Services-only sections
 
-[`ServicesHero`](components/services/ServicesHero.tsx), [`BookedJobSystem`](components/services/BookedJobSystem.tsx), [`PricingTable`](components/services/PricingTable.tsx), [`SystemFeaturesList`](components/services/SystemFeaturesList.tsx), [`WebsiteBuildSection`](components/services/WebsiteBuildSection.tsx).
+[`ServicesHero`](components/services/ServicesHero.tsx), [`OperationsSystemsAssessment`](components/services/OperationsSystemsAssessment.tsx), [`CarePath360`](components/services/CarePath360.tsx), [`WebsiteBuildSection`](components/services/WebsiteBuildSection.tsx).
 
 ### Case Studies
 
@@ -288,13 +288,14 @@ Edit [`data/testimonials.ts`](data/testimonials.ts):
 
 [`data/caseStudies.ts`](data/caseStudies.ts) drives both cards + detail templates via `CASE_STUDIES`. Update `summary`, `problem`, `onboarding`, `result` strings — editorial sections read straight from this file.
 
-### Services pricing
+### Services content
 
 [`data/services.ts`](data/services.ts):
 
-- Adjust tier pricing text (`price`, `description`, optional `slotsBadge`).
-- Feature checklist strings live in `BJS_FEATURES`.
-- Website bundle messaging sits in `WEBSITE_BUILD.bundleNote`.
+- Assessment how-it-works steps live in `ASSESSMENT_STEPS`.
+- Tally qualifying form URL lives in `TALLY_FORM_URL` (placeholder until the live form is ready).
+- CarePath360 copy lives in `CAREPATH360`.
+- Website from-pricing sits in `WEBSITE_BUILD.priceFrom`.
 
 ### Navigation & footer destinations
 
@@ -316,17 +317,17 @@ Change `CHANNEL_HANDLE` inside [`lib/youtube.ts`](lib/youtube.ts) (defaults to `
 - **Provisioning:** Google Cloud Console → enable **YouTube Data API v3** → Credentials → API key → restrict by HTTP referrer / IP in production.
 - **Fallback:** When the key is missing or Google responds with an error, [`YouTubeFeed`](components/content/YouTubeFeed.tsx) shows **“Videos loading, check back soon”** and hides the grid.
 
-### Formspree
+### Contact form (n8n)
 
-- **Purpose:** Email relay for [`ContactForm`](components/contact/ContactForm.tsx).
-- **Environment variable:** `.env.local.example` lists `FORMSPREE_ENDPOINT` purely as a checklist reminder — the runtime URL is the constant `FORMSPREE_ACTION`.
-- **Provisioning:** Create a form at [formspree.io](https://formspree.io) and swap `YOUR_ID` for the slug Formspree assigns.
-- **Fallback:** Failed POST surfaces inline error text and encourages direct email.
+- **Purpose:** Relay for [`ContactForm`](components/contact/ContactForm.tsx) via [`/api/contact`](app/api/contact/route.ts).
+- **Environment variable:** `N8N_CONTACT_WEBHOOK_URL` (**server-only — never prefix with `NEXT_PUBLIC_`**).
+- **Provisioning:** Create/open the n8n webhook workflow and paste the URL into Vercel env vars, then redeploy.
+- **Fallback:** Missing webhook returns 503; invalid fields return 400; delivery failures return 502 with inline form error text.
 
 ### Calendly
 
 - **Purpose:** Inline scheduling on `/contact` + immersive `/book`.
-- **Code:** [`CalendlyEmbed`](components/contact/CalendlyEmbed.tsx) contains the iframe `src`.
+- **Code:** [`CalendlyEmbed`](components/contact/CalendlyEmbed.tsx) reads `CONTACT_DETAILS.calendly` from [`data/navigation.ts`](data/navigation.ts).
 - **Credentials:** None — public embed URL.
 - **Fallback:** If Calendly is down, the iframe simply fails to render meaningful UI; mitigations include linking out via footer/nav CTAs.
 
@@ -337,7 +338,7 @@ Change `CHANNEL_HANDLE` inside [`lib/youtube.ts`](lib/youtube.ts) (defaults to `
 | Variable | Required? | Purpose | Where to get it |
 | --- | --- | --- | --- |
 | `YOUTUBE_API_KEY` | Optional locally; **required for live feed** | Authenticates YouTube Data API requests | Google Cloud → APIs & Services → Credentials |
-| `FORMSPREE_ENDPOINT` | Optional / reminder only | Documented placeholder — actual endpoint lives in code (`FORMSPREE_ACTION`) | [Formspree Dashboard](https://formspree.io/forms) |
+| `N8N_CONTACT_WEBHOOK_URL` | **Required for contact form** | Server-only n8n webhook for `/api/contact` | Your n8n workflow webhook URL |
 
 Create `.env.local` at the repo root:
 
@@ -433,11 +434,10 @@ SVG preferred for razor-sharp dark/light contexts.
 
 - **LinkedIn section is static marketing copy + outbound button** — no live embed or API feed by design.
 - **Komiklean onboarding/result + AMPSAC onboarding** still carry placeholder language until clients approve quotes.
-- **Formspree endpoint ships as `YOUR_ID`** until you paste the real slug (`components/contact/ContactForm.tsx`).
-- **Founder photography** is still a labelled placeholder frame on Home + About.
+- **Contact form needs `N8N_CONTACT_WEBHOOK_URL`** set in Vercel (server-only) or submissions return an error.
 - **Home testimonials** render deliberate placeholders until real quotes exist (`data/testimonials.ts`).
 - **`AnimatedCounter` ships unused** — harmless helper awaiting future metrics storytelling.
-- **No `public/` assets yet** — add `favicon.ico`, Open Graph artwork, or PDFs there when ready; wire Open Graph images via `metadata.openGraph.images` in [`app/layout.tsx`](app/layout.tsx) or per-page metadata for richer social previews.
+- **Open Graph artwork** — wire `metadata.openGraph.images` in [`app/layout.tsx`](app/layout.tsx) or per-page metadata for richer social previews.
 
 ---
 

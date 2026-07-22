@@ -1,3 +1,4 @@
+import { CONTACT_DETAILS } from "@/data/navigation";
 import { cn } from "@/lib/utils";
 
 export type CalendlyEmbedProps = {
@@ -27,7 +28,7 @@ export function CalendlyEmbed({
       )}
     >
       <iframe
-        src="https://calendly.com/michael-michaelangelo-digital/15-minute-meeting-clone"
+        src={CONTACT_DETAILS.calendly}
         title={title}
         className={cn("w-full border-0", iframeHeight)}
         loading="lazy"

@@ -24,18 +24,18 @@ export type Testimonial = {
 
 export const TESTIMONIALS: Testimonial[] = [
   {
-    id: "placeholder-1",
-    quote: "Testimonial coming soon.",
-    name: "Client name pending",
-    company: "Company name pending",
-    isPlaceholder: true,
+    id: "komiklean-1",
+    quote: "Thanks for your service. You gave my business that professional touch. I will recommend this to business owners 👌",
+    name: "Seyi Soetan",
+    company: "Komiklean Multiservices",
+    isPlaceholder: false,
   },
   {
-    id: "placeholder-2",
-    quote: "Testimonial coming soon.",
-    name: "Client name pending",
-    company: "Company name pending",
-    isPlaceholder: true,
+    id: "gina-2",
+    quote: "If you’re considering automating your LinkedIn posting, I highly recommend working with Michaelangelo. He was incredibly attentive to every detail, guided me through the entire process with patience and clarity. The experience was smooth from start to finish, and the final result has made a real impact. It was a pleasure working with someone who genuinely cares about delivering quality and achieving the best possible outcome.",
+    name: "Gina-Cristina Năstasă",
+    company: "Gina-Cristina Năstasă - Cabinet Individual de Psihologie",
+    isPlaceholder: false,
   },
   {
     id: "placeholder-3",

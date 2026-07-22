@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Mail, Globe } from "lucide-react";
+import { ArrowUpRight, ClipboardList, ShieldCheck, Globe } from "lucide-react";
 import { Container } from "@/components/shared/Container";
 import { SectionTitle } from "@/components/shared/SectionTitle";
 import {
@@ -13,20 +13,31 @@ import {
 
 const CARDS = [
   {
-    title: "Booked Job System",
+    title: "Operations Systems Assessment",
     description:
-      "A done-for-you enquiry automation system for cleaning companies. Never miss a lead, never chase a customer manually again.",
+      "A free assessment call and written report mapping the operational bottlenecks costing you time or money.",
     tone: "navy" as const,
-    icon: Mail,
-    cta: "Explore the system",
+    icon: ClipboardList,
+    cta: "Explore the assessment",
+    href: "/services#operations-systems-assessment",
+  },
+  {
+    title: "CarePath360",
+    description:
+      "A compliance and onboarding platform for care providers with small admin teams — stay compliant without adding headcount.",
+    tone: "ink" as const,
+    icon: ShieldCheck,
+    cta: "Explore CarePath360",
+    href: "/services#carepath360",
   },
   {
     title: "Website Design and Build",
     description:
       "Clean, fast, modern websites built to represent your business properly and convert visitors into customers.",
-    tone: "ink" as const,
+    tone: "navy" as const,
     icon: Globe,
     cta: "See the build offer",
+    href: "/services#website-build",
   },
 ];
 
@@ -40,7 +51,7 @@ export function WhatWeDo() {
         />
 
         <motion.div
-          className="mt-16 grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
+          className="mt-16 grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8"
           variants={staggerContainer}
           initial="hidden"
           whileInView="visible"
@@ -52,9 +63,9 @@ export function WhatWeDo() {
             return (
               <motion.div key={card.title} variants={cardSpringUp}>
                 <Link
-                  href="/services"
+                  href={card.href}
                   className={
-                    "group block relative overflow-hidden rounded-3xl p-8 sm:p-10 lg:p-12 h-full transition-transform duration-300 hover:-translate-y-1 " +
+                    "group block relative overflow-hidden rounded-3xl p-8 sm:p-10 h-full transition-transform duration-300 hover:-translate-y-1 " +
                     (isNavy
                       ? "bg-navy text-white"
                       : "bg-ink text-white border border-white/5")
@@ -75,7 +86,7 @@ export function WhatWeDo() {
                     />
                   </div>
 
-                  <h3 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-[1.05] text-balance">
+                  <h3 className="font-display text-3xl sm:text-4xl leading-[1.05] text-balance">
                     {card.title}
                   </h3>
                   <p className="mt-5 text-white/70 text-base sm:text-lg leading-relaxed max-w-md">

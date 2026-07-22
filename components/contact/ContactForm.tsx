@@ -9,8 +9,6 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { FadeInView } from "@/components/shared/FadeInView";
 
-const N8N_WEBHOOK_URL = process.env.NEXT_PUBLIC_N8N_CONTACT_WEBHOOK_URL ?? "";
-
 type SubmitState = "idle" | "submitting" | "success" | "error";
 
 export function ContactForm() {
@@ -33,7 +31,7 @@ export function ContactForm() {
     };
 
     try {
-      const res = await fetch(N8N_WEBHOOK_URL, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
@@ -78,7 +76,7 @@ export function ContactForm() {
           </p>
         </motion.div>
       ) : (
-        <form className="mt-10 space-y-6" onSubmit={handleSubmit} noValidate>
+        <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
           <div className="space-y-2">
             <Label htmlFor="contact-name">Name</Label>
             <Input
@@ -87,6 +85,7 @@ export function ContactForm() {
               autoComplete="name"
               placeholder="Your full name"
               required
+              maxLength={500}
             />
           </div>
 
@@ -99,6 +98,7 @@ export function ContactForm() {
               autoComplete="email"
               placeholder="you@yourbusiness.co.uk"
               required
+              maxLength={500}
             />
           </div>
 
@@ -110,6 +110,7 @@ export function ContactForm() {
               type="tel"
               autoComplete="tel"
               placeholder="Your phone number"
+              maxLength={500}
             />
           </div>
 
@@ -121,6 +122,7 @@ export function ContactForm() {
               autoComplete="organization"
               placeholder="Your company name"
               required
+              maxLength={500}
             />
           </div>
 
@@ -131,6 +133,7 @@ export function ContactForm() {
               name="message"
               placeholder="What do you need help with?"
               required
+              maxLength={5000}
             />
           </div>
 

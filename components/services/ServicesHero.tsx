@@ -39,7 +39,7 @@ export function ServicesHero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
         >
-          Two services. One goal. Give you your time back.
+          Three services with One goal. To give you your time back.
         </motion.p>
       </Container>
     </section>

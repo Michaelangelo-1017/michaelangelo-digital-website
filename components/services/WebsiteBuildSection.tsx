@@ -33,12 +33,13 @@ export function WebsiteBuildSection() {
   return (
     <section
       id="website-build"
-      className="relative bg-cream py-24 sm:py-28 lg:py-32 overflow-hidden"
+      className="relative bg-cream pt-32 sm:pt-36 lg:pt-40 pb-24 sm:pb-28 lg:pb-32 overflow-hidden border-t-8 border-amber/30"
     >
+
       <Container size="wide">
         <FadeInView>
           <p className="text-xs uppercase tracking-label font-semibold text-amber mb-6">
-            Service two
+            Service three
           </p>
         </FadeInView>
 
@@ -117,15 +118,6 @@ export function WebsiteBuildSection() {
             <p className="font-display text-6xl sm:text-7xl text-white leading-none mt-2">
               {WEBSITE_BUILD.priceFrom}
             </p>
-
-            <div className="mt-10 rounded-2xl bg-amber/10 border border-amber/30 p-5">
-              <p className="text-[10px] uppercase tracking-label font-semibold text-amber mb-2">
-                Bundle deal
-              </p>
-              <p className="text-sm sm:text-base text-white leading-relaxed">
-                {WEBSITE_BUILD.bundleNote}
-              </p>
-            </div>
 
             <div className="mt-8">
               <CTAButton

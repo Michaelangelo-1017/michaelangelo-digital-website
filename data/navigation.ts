@@ -26,7 +26,11 @@ export const FOOTER_GROUPS: { heading: string; links: NavLink[] }[] = [
   {
     heading: "Services",
     links: [
-      { label: "Booked Job System", href: "/services#booked-job-system" },
+      {
+        label: "Operations Systems Assessment",
+        href: "/services#operations-systems-assessment",
+      },
+      { label: "CarePath360", href: "/services#carepath360" },
       { label: "Website Build", href: "/services#website-build" },
       { label: "Book a Call", href: "/book" },
     ],

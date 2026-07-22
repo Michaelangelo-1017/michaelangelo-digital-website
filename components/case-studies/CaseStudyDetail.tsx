@@ -25,9 +25,10 @@ function EditorialSection({
   body: string;
   variant: "light" | "muted";
 }) {
+  const normalised = body.toLowerCase();
   const isPlaceholder =
-    body.includes("to be added") ||
-    body.includes("Outcome details to be added");
+    normalised.includes("to be added") ||
+    normalised.includes("outcome details to be added");
 
   return (
     <motion.section

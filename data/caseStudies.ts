@@ -28,7 +28,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientName: "Komiklean Multiservice",
     status: "Live",
     industry: "Cleaning",
-    serviceDelivered: "BJS Done For You Install",
+    serviceDelivered: "Enquiry Automation System",
     summary:
       "From basic contact form to a fully automated quote pipeline built for a newly established cleaning company owner.",
     problem:
@@ -61,15 +61,15 @@ export const CASE_STUDIES: CaseStudy[] = [
     clientName: "AMPSAC City Clean",
     status: "Live",
     industry: "Cleaning",
-    serviceDelivered: "BJS Done For You Install",
+    serviceDelivered: "Website Build + Enquiry Automation",
     summary:
-      "From basic contact form to a fully automated quote pipeline built for a newly established cleaning company owner.",
+      "Website rebuilt and put back online, then paired with a fully automated quote pipeline so enquiries no longer fall through the cracks.",
     problem:
-      "Their enquiry process was entirely manual with no system to capture or follow up on quote requests.",
+      "The client's website was offline after expired hosting, and their enquiry process was entirely manual with no system to capture or follow up on quote requests.",
     onboarding:
-      "The client was onboarded via an in-person meeting where we discussed their business and their needs. We then built a custom quote form that was integrated with their existing website.",
+      "The client was onboarded via an in-person meeting where we discussed their business and their needs. We rebuilt the website, then built a custom quote form integrated with the new site.",
     result:
-      "The client now has a fully automated quote pipeline that allows them to focus on growing their business rather than chasing enquiries.",
+      "The site is live again with free hosting, and the client now has a fully automated quote pipeline so they can focus on growing the business rather than chasing enquiries.",
     link: "https://www.ampsaccleaning.com/contact",
   },
 ];

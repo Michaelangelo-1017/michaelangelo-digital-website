@@ -9,12 +9,12 @@ const SLUG = "komiklean";
 export const metadata: Metadata = {
   title: "Komiklean Multiservice",
   description:
-    "How Komiklean Multiservice moved from a manual enquiry process to a done-for-you Booked Job System install.",
+    "How Komiklean Multiservice moved from a manual enquiry process to a done-for-you enquiry automation system.",
   alternates: { canonical: `/case-studies/${SLUG}` },
   openGraph: {
     title: "Komiklean Multiservice | Case Study",
     description:
-      "BJS Done For You Install — capturing and following up on quote requests automatically.",
+      "Enquiry automation install — capturing and following up on quote requests automatically.",
     url: `/case-studies/${SLUG}`,
     type: "article",
   },

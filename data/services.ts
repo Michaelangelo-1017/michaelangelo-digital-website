@@ -1,67 +1,47 @@
 /**
  * Services page content.
  *
- * To update pricing:
- *   - Edit the `price` and `priceLabel` on a tier in BJS_TIERS.
- *   - Update `slotsBadge` on Tier 1 (or remove it) once the free
- *     installs are gone.
+ * To update website pricing:
+ *   - Edit WEBSITE_BUILD.priceFrom.
  *
- * To update the bundle discount:
- *   - Edit WEBSITE_BUILD.bundleNote.
- *
- * To update the BJS feature list:
- *   - Add / edit entries in BJS_FEATURES.
+ * To update the assessment CTA form:
+ *   - Edit TALLY_FORM_URL.
  */
 
-export type BJSTier = {
-  id: string;
-  tier: string;
-  price: string;
-  priceLabel?: string;
-  description: string;
-  slotsBadge?: string;
-  highlight?: boolean;
-};
+export const TALLY_FORM_URL = "https://tally.so/r/A7O4pN";
 
-export const BJS_TIERS: BJSTier[] = [
+export const ASSESSMENT_STEPS: { step: string; title: string; description: string }[] = [
   {
-    id: "tier-1",
-    tier: "Tier 1",
-    price: "FREE",
-    priceLabel: "First 3 installs",
+    step: "01",
+    title: "Apply",
     description:
-      "First three installs are free as we validate the system with real businesses.",
-    slotsBadge: "1 slot remaining",
-    highlight: true,
+      "Fill in a short qualifying form so I understand your industry, team, and the result you are after.",
   },
   {
-    id: "tier-2",
-    tier: "Tier 2",
-    price: "£399",
-    description: "Installs 4 to 7.",
+    step: "02",
+    title: "Assessment Call",
+    description:
+      "A free 15 to 30 minute call to map the operational bottlenecks costing you time or money.",
   },
   {
-    id: "tier-3",
-    tier: "Tier 3",
-    price: "£699",
-    description: "Installs 8 and above.",
+    step: "03",
+    title: "Your Report and Walkthrough",
+    description:
+      "A full written report delivered and explained on a follow-up call which is a standalone deliverable you can act on.",
   },
 ];
 
-export const BJS_FEATURES: { title: string }[] = [
-  { title: "Captures quote requests automatically." },
-  { title: "Sends instant customer confirmation emails." },
-  { title: "Notifies the owner immediately." },
-  {
-    title:
-      "Sends up to 4 owner reminder emails 15 minutes apart if the lead is not actioned.",
-  },
-  { title: "Tracks all leads in a central Google Sheet." },
-  { title: "Prevents missed or forgotten enquiries." },
-];
+export const CAREPATH360 = {
+  oneLiner:
+    "A compliance and onboarding platform built for care providers with small admin teams.",
+  description:
+    "CarePath360 acts as a dedicated staff compliance officer. It keeps staff documents compliant and up to date automatically, gives employees direct access to their own compliance documents so they can manage their own compliance, and simplifies onboarding for new starters in the CarePath360 network.",
+  audience:
+    "Built for UK care providers with small admin teams who need a reliable way to stay compliant without adding headcount.",
+  pricingLabel: "Custom pricing",
+  pricingNote: "Book a call to discuss what fits your organisation.",
+};
 
 export const WEBSITE_BUILD = {
   priceFrom: "£300",
-  bundleNote:
-    "Book a website build and a BJS install together and save £100 off the combined price.",
 };

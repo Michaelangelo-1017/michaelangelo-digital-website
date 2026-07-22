@@ -6,7 +6,7 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 export const metadata: Metadata = {
   title: "Case Studies",
   description:
-    "Real cleaning businesses in the UK — enquiry automation with the Booked Job System and modern Next.js websites.",
+    "Real cleaning businesses in the UK — enquiry automation systems and modern Next.js websites.",
   alternates: { canonical: "/case-studies" },
   openGraph: {
     title: "Case Studies | Michaelangelo Digital",

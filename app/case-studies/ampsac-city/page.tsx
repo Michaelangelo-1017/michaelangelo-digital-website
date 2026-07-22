@@ -9,12 +9,12 @@ const SLUG = "ampsac-city";
 export const metadata: Metadata = {
   title: "AMPSAC City Clean",
   description:
-    "AMPSAC City Clean — website rebuilt in Next.js on Vercel after expired hosting took the old site offline.",
+    "AMPSAC City Clean — website rebuilt after expired hosting, plus enquiry automation for quote requests.",
   alternates: { canonical: `/case-studies/${SLUG}` },
   openGraph: {
     title: "AMPSAC City Clean | Case Study",
     description:
-      "Website Design and Build — faster site, free hosting, domain reconnected.",
+      "Website Build + Enquiry Automation — site back online and quotes followed up automatically.",
     url: `/case-studies/${SLUG}`,
     type: "article",
   },

@@ -11,7 +11,7 @@ Before you begin, make sure **all** of the following are ready:
 1. **Vercel account** — Sign up at [https://vercel.com](https://vercel.com).
 2. **GitHub repository** containing this Next.js project — it must be connected to Vercel later (you can import directly from GitHub in the Vercel dashboard).
 3. **YouTube Data API v3 key** from Google Cloud Console (needed if you want the `/content` feed to show real videos in production).
-4. **Formspree account** with at least one active form at [https://formspree.io](https://formspree.io) (needed so the contact form actually sends email).
+4. **n8n contact webhook URL** (needed so the `/contact` form can deliver messages — set as server-only `N8N_CONTACT_WEBHOOK_URL` in Vercel).
 5. **DNS access** for **michaelangelo-digital.co.uk** at your registrar (Cloudflare, Namecheap, GoDaddy, etc.) — you must be able to edit **A** and **CNAME** records.
 6. **Node.js 18 or newer** installed on your computer so you can run `npm install`, `npm run build`, and catch errors locally before pushing.
 
@@ -48,7 +48,7 @@ Optional but recommended:
    | Key | What to paste |
    | --- | --- |
    | `YOUTUBE_API_KEY` | Google Cloud API key with **YouTube Data API v3** enabled |
-   | `FORMSPREE_ENDPOINT` | *(Reminder only — not read by code)* leave blank or jot your Formspree form slug for your own notes |
+   | `N8N_CONTACT_WEBHOOK_URL` | Your n8n webhook URL for contact form submissions (**server-only** — never prefix with `NEXT_PUBLIC_`) |
 
 6. Save `.env.local`. **Never commit this file** — it stays local / in Vercel’s dashboard only.
 
@@ -111,7 +111,10 @@ Optional but recommended:
 2. Add **`YOUTUBE_API_KEY`**:
    - **Value:** paste the Google API key.
    - **Environments:** enable **Production**, **Preview**, and **Development** (recommended so previews behave like production).
-3. *(Optional)* Add **`FORMSPREE_ENDPOINT`** purely as a note — the running app still reads the hardcoded URL inside [`components/contact/ContactForm.tsx`](components/contact/ContactForm.tsx) until you edit that file directly (see Step 7).
+3. Add **`N8N_CONTACT_WEBHOOK_URL`**:
+   - **Value:** paste your n8n webhook URL.
+   - **Environments:** enable **Production** (and **Preview** if you want preview deploys to accept form tests).
+   - Do **not** name this `NEXT_PUBLIC_…` — it must stay server-only.
 4. Click **Save** for each variable.
 5. After **any** variable change, trigger a redeploy:
    - Go to **Deployments → … menu → Redeploy** on the latest deployment, **or**
@@ -152,7 +155,7 @@ Verify **each** item after DNS resolves:
 1. **Homepage loads** at `https://www.michaelangelo-digital.co.uk/` without console errors (open DevTools → Console).
 2. **Calendly** renders inside `/contact` and `/book` — you should see time-slot UI, not a blank iframe.
 3. **YouTube grid** on `/content` shows six videos **when `YOUTUBE_API_KEY` is set** in Vercel and redeployed.
-4. **Contact form** submits successfully **after** replacing Formspree placeholder ID (Step 7) — confirm inbox receives the email.
+4. **Contact form** submits successfully **after** `N8N_CONTACT_WEBHOOK_URL` is set in Vercel and redeployed — confirm your n8n workflow receives the payload.
 5. Click **every navigation link** on desktop and repeat on a phone-width viewport (hamburger drawer opens, closes, links route correctly).
 6. **Animations** — route transitions + scroll reveals should feel identical to local production (`npm run start`).
 7. **HTTPS padlock** appears — no mixed-content warnings.
@@ -162,21 +165,14 @@ Verify **each** item after DNS resolves:
 
 ---
 
-## Step 7: Update Formspree endpoint
+## Step 7: Configure the n8n contact webhook
 
-Until you replace the placeholder, form submissions silently fail against a non-existent endpoint.
+Until `N8N_CONTACT_WEBHOOK_URL` is set, `/api/contact` returns **503** and the form shows an error (it will not fake a success message).
 
-1. Open [`components/contact/ContactForm.tsx`](components/contact/ContactForm.tsx).
-2. Locate **line 16** (approx.) — the constant:
-
-   ```ts
-   const FORMSPREE_ACTION = "https://formspree.io/f/YOUR_ID";
-   ```
-
-3. In Formspree → **Forms**, copy your form endpoint slug (looks like `https://formspree.io/f/abcdxyz`).
-4. Paste it over `https://formspree.io/f/YOUR_ID`.
-5. Save, commit, push — wait for Vercel deployment.
-6. Submit a **test message** on `/contact` and confirm email arrival + spam folder check.
+1. In n8n, create/open the workflow that receives contact submissions and copy its **webhook URL**.
+2. In Vercel → **Settings → Environment Variables**, set **`N8N_CONTACT_WEBHOOK_URL`** to that URL (server-only — no `NEXT_PUBLIC_` prefix).
+3. Redeploy.
+4. Submit a **test message** on `/contact` and confirm the workflow runs.
 
 ---
 
@@ -226,11 +222,11 @@ Before publicly promoting the site, walk through this checklist:
 2. Confirm **YouTube Data API v3** is enabled for the GCP project tied to that key.
 3. Hit `/api/youtube` on your deployment — `{ "videos": null }` indicates lookup failure.
 
-### Contact form never emails
+### Contact form never delivers
 
-1. Ensure Step 7 replaced `YOUR_ID`.
-2. Check Formspree dashboard for spam blocks / verification emails.
-3. Open browser **Network** tab — failed POST shows Formspree error JSON.
+1. Confirm `N8N_CONTACT_WEBHOOK_URL` is set in Vercel for **Production** and you **Redeployed** after saving.
+2. Check the n8n workflow execution history for failed runs.
+3. Open browser **Network** tab — failed POST to `/api/contact` shows `400` / `502` / `503` JSON.
 
 ### Domain shows **Invalid Configuration**
 
