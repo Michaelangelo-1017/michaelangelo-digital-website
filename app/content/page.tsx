@@ -8,10 +8,10 @@ import { fetchLatestVideos } from "@/lib/youtube";
 export const metadata: Metadata = {
   title: "Content",
   description:
-    "Follow the Michaelangelo Digital journey on YouTube and LinkedIn — cold calls, installs, lessons, and builds documented as they happen.",
+    "Follow the Clophy journey on YouTube and LinkedIn — cold calls, installs, lessons, and builds documented as they happen.",
   alternates: { canonical: "/content" },
   openGraph: {
-    title: "Content | Michaelangelo Digital",
+    title: "Content | Clophy",
     description:
       "The journey in public — latest videos from Michaelangelo Builds plus founder updates on LinkedIn.",
     url: "/content",
@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Content | Michaelangelo Digital",
+    title: "Content | Clophy",
     description:
-      "Latest from YouTube and updates on LinkedIn — building Michaelangelo Digital in public.",
+      "Latest from YouTube and updates on LinkedIn — building Clophy in public.",
   },
 };
 

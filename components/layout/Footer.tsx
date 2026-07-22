@@ -88,7 +88,7 @@ export function Footer() {
 
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <p className="text-white/50 text-xs">
-            © {year} Michaelangelo Digital. All rights reserved.
+            © {year} Clophy. All rights reserved.
           </p>
           <p className="text-white/40 text-xs">
             Luton, England · Building in public

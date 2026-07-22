@@ -25,7 +25,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.05 }}
         >
-          Michaelangelo Digital
+          Clophy
         </motion.p>
 
         <div className="relative">
@@ -50,7 +50,7 @@ export function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
         >
-          Michaelangelo Digital builds automation systems and websites for
+          Clophy builds automation systems and websites for
           small business owners who are tired of spending their <em className="text-amber">precious time</em> on manual
           tasks.
         </motion.p>

@@ -20,25 +20,25 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.michaelangelo-digital.co.uk"),
+  metadataBase: new URL("https://www.clophy.com"),
   title: {
-    default: "Michaelangelo Digital | Automation systems and websites",
-    template: "%s | Michaelangelo Digital",
+    default: "Clophy | Automation systems and websites",
+    template: "%s | Clophy",
   },
   description:
-    "Michaelangelo Digital builds enquiry automation systems and websites for small business owners in the UK. Save time, stop missing leads, and focus on the work that matters.",
+    "Clophy builds enquiry automation systems and websites for small business owners in the UK. Save time, stop missing leads, and focus on the work that matters.",
   openGraph: {
-    title: "Michaelangelo Digital",
+    title: "Clophy",
     description:
       "Automation systems and websites for small business owners who are tired of manual work.",
-    url: "https://www.michaelangelo-digital.co.uk",
-    siteName: "Michaelangelo Digital",
+    url: "https://www.clophy.com",
+    siteName: "Clophy",
     locale: "en_GB",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Michaelangelo Digital",
+    title: "Clophy",
     description:
       "Automation systems and websites for small business owners who are tired of manual work.",
   },

@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     "Operations Systems Assessment Call, CarePath360, and Website Design and Build: systems and platforms for small business owners in the UK.",
   alternates: { canonical: "/services" },
   openGraph: {
-    title: "Services | Michaelangelo Digital",
+    title: "Services | Clophy",
     description:
       "Three services. One goal. Give you your time back.",
     url: "/services",

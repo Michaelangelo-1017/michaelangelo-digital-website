@@ -53,9 +53,9 @@ export const FOOTER_GROUPS: { heading: string; links: NavLink[] }[] = [
 export const CONTACT_DETAILS = {
   phone: "07448022179",
   phoneInternational: "+447448022179",
-  email: "michael@michaelangelo-digital.co.uk",
+  email: "michael@clophy.com",
   whatsapp: "https://wa.me/447448022179",
   calendly: "https://calendly.com/michael-michaelangelo-digital/30min",
-  youtube: "https://www.youtube.com/@MichaelangeloBuilds",
+  youtube: "https://www.youtube.com/@thefounderline",
   linkedin: "https://www.linkedin.com/in/michaelangelo-agbodike-a91466263",
 };

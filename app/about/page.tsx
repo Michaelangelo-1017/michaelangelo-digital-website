@@ -8,12 +8,12 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Michaelangelo Digital is built by Michaelangelo Agbodike — a 22-year-old self-taught founder in Luton, England, building automation systems for small business owners in public.",
+    "Clophy is built by Michaelangelo Agbodike — a 22-year-old self-taught founder in Luton, England, building automation systems for small business owners in public.",
   alternates: { canonical: "/about" },
   openGraph: {
-    title: "About | Michaelangelo Digital",
+    title: "About | Clophy",
     description:
-      "Solo founder. Self-taught. Building in public. The story behind Michaelangelo Digital.",
+      "Solo founder. Self-taught. Building in public. The story behind Clophy.",
     url: "/about",
     type: "profile",
   },

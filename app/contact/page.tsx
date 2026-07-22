@@ -8,20 +8,20 @@ import { Container } from "@/components/shared/Container";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Get in touch with Michaelangelo Digital — phone, email, WhatsApp, contact form, or book a call with Calendly.",
+    "Get in touch with Clophy — phone, email, WhatsApp, contact form, or book a call with Calendly.",
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: "Contact | Michaelangelo Digital",
+    title: "Contact | Clophy",
     description:
-      "Reach Michaelangelo Digital by phone, email, WhatsApp, or schedule a free call.",
+      "Reach Clophy by phone, email, WhatsApp, or schedule a free call.",
     url: "/contact",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Contact | Michaelangelo Digital",
+    title: "Contact | Clophy",
     description:
-      "Reach Michaelangelo Digital by phone, email, WhatsApp, or schedule a free call.",
+      "Reach Clophy by phone, email, WhatsApp, or schedule a free call.",
   },
 };
 

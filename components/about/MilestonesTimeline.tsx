@@ -131,7 +131,7 @@ function DesktopTimeline() {
     <div
       className="relative mx-auto max-w-5xl"
       style={{ height: `${DT_HEIGHT}px` }}
-      aria-label="Michaelangelo Digital milestones timeline"
+      aria-label="Clophy milestones timeline"
     >
       <svg
         className="absolute inset-0 w-full h-full"
@@ -212,7 +212,7 @@ function MobileTimeline() {
   return (
     <div
       className="relative pb-4"
-      aria-label="Michaelangelo Digital milestones timeline (mobile)"
+      aria-label="Clophy milestones timeline (mobile)"
     >
       {/* Navy spine only spans the *completed* milestones — future rows sit below without this track. */}
       <div className="relative">

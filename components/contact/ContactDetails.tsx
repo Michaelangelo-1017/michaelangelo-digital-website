@@ -87,7 +87,7 @@ export function ContactDetailsPanel() {
         <p className="mb-4 text-xs font-semibold uppercase tracking-label text-muted">
           Book online
         </p>
-        <CalendlyEmbed title="Schedule a call — Michaelangelo Digital" />
+        <CalendlyEmbed title="Schedule a call — Clophy" />
       </motion.div>
     </motion.div>
   );

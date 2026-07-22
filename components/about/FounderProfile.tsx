@@ -57,7 +57,7 @@ export function FounderProfile() {
             <ImageReveal className="relative rounded-3xl border-4 border-amber-500 aspect-[4/5] bg-navy/5">
               <Image
                   src="/images/founder.jpg"
-                  alt="Michaelangelo Agbodike, founder of Michaelangelo Digital"
+                  alt="Michaelangelo Agbodike, founder of Clophy"
                   fill
                   className="object-cover object-center"
                   sizes="(max-width: 1024px) 100vw, 38vw"

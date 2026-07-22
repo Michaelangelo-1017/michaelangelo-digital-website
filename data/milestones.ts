@@ -33,7 +33,7 @@ export const COMPLETED_MILESTONES: CompletedMilestone[] = [
     date: "24 February 2026",
     shortDate: "Feb 24, 2026",
     title: "Company Founded",
-    description: "Michaelangelo Digital officially launched.",
+    description: "Clophy officially launched.",
   },
   {
     id: "first-cold-call",

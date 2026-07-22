@@ -1,10 +1,10 @@
-# Michaelangelo Digital — Website
+# Clophy — Website
 
 ## Project Overview
 
-This repository contains the marketing website for **Michaelangelo Digital**, the automation-and-web studio founded by Michaelangelo Agbodike in Luton, England. It speaks directly to **UK small business owners** — especially cleaning operators — who want **operations systems**, **compliance tooling**, and **fast, credible websites** without drowning in admin.
+This repository contains the marketing website for **Clophy**, the automation-and-web studio founded by Michaelangelo Agbodike in Luton, England. It speaks directly to **UK small business owners** — especially cleaning operators — who want **operations systems**, **compliance tooling**, and **fast, credible websites** without drowning in admin.
 
-Live domain: **[michaelangelo-digital.co.uk](https://www.michaelangelo-digital.co.uk)**.
+Live domain: **[clophy.com](https://www.clophy.com)**.
 
 What each route delivers:
 
@@ -393,7 +393,7 @@ Update Tailwind **`extend.colors.navy`** (and related scales) inside [`tailwind.
 
 ## Logo and Branding
 
-[`components/Logo.tsx`](components/Logo.tsx) renders a **text-based wordmark** (“Michaelangelo · *Digital*”) using Fraunces, swapping colours via `variant="dark" | "light"` (navy on cream, white on ink).
+[`components/Logo.tsx`](components/Logo.tsx) renders a **text-based wordmark** (“Clophy”) using Fraunces, swapping colours via `variant="dark" | "light"` (navy on cream, white on ink).
 
 ### Swapping in a future raster/vector logo
 
@@ -405,7 +405,7 @@ import Image from "next/image";
 
 <Image
   src="/logo.svg"
-  alt="Michaelangelo Digital"
+  alt="Clophy"
   width={220}
   height={48}
   priority

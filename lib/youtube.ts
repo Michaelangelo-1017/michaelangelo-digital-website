@@ -16,7 +16,7 @@ export type YouTubeVideo = {
   url: string;
 };
 
-const CHANNEL_HANDLE = "MichaelangeloBuilds";
+const CHANNEL_HANDLE = "thefounderline";
 const REVALIDATE_SECONDS = 60 * 60 * 6; // 6 hours
 
 async function resolveChannelId(apiKey: string): Promise<string | null> {

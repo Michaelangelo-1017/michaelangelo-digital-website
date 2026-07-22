@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     "Real cleaning businesses in the UK — enquiry automation systems and modern Next.js websites.",
   alternates: { canonical: "/case-studies" },
   openGraph: {
-    title: "Case Studies | Michaelangelo Digital",
+    title: "Case Studies | Clophy",
     description:
       "Real businesses. Real problems. Real results.",
     url: "/case-studies",

@@ -10,10 +10,10 @@ import { FinalCTA } from "@/components/home/FinalCTA";
 export const metadata: Metadata = {
   title: "Home",
   description:
-    "Michaelangelo Digital builds enquiry automation systems and websites for small business owners in the UK. Save time, stop missing leads, and focus on the work that matters.",
+    "Clophy builds enquiry automation systems and websites for small business owners in the UK. Save time, stop missing leads, and focus on the work that matters.",
   alternates: { canonical: "/" },
   openGraph: {
-    title: "Michaelangelo Digital",
+    title: "Clophy",
     description:
       "Automation systems and websites for small business owners who are tired of manual work.",
     url: "/",

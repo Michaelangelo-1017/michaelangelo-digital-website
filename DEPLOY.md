@@ -1,6 +1,6 @@
-# Deploying Michaelangelo Digital to production
+# Deploying Clophy to production
 
-This guide walks you from a **fresh clone** to a **live HTTPS site** at **https://www.michaelangelo-digital.co.uk** using **Vercel**. Follow the steps in order — each major phase is numbered.
+This guide walks you from a **fresh clone** to a **live HTTPS site** at **https://www.clophy.com** using **Vercel**. Follow the steps in order — each major phase is numbered.
 
 ---
 
@@ -12,7 +12,7 @@ Before you begin, make sure **all** of the following are ready:
 2. **GitHub repository** containing this Next.js project — it must be connected to Vercel later (you can import directly from GitHub in the Vercel dashboard).
 3. **YouTube Data API v3 key** from Google Cloud Console (needed if you want the `/content` feed to show real videos in production).
 4. **n8n contact webhook URL** (needed so the `/contact` form can deliver messages — set as server-only `N8N_CONTACT_WEBHOOK_URL` in Vercel).
-5. **DNS access** for **michaelangelo-digital.co.uk** at your registrar (Cloudflare, Namecheap, GoDaddy, etc.) — you must be able to edit **A** and **CNAME** records.
+5. **DNS access** for **clophy.com** at your registrar (Cloudflare, Namecheap, GoDaddy, etc.) — you must be able to edit **A** and **CNAME** records.
 6. **Node.js 18 or newer** installed on your computer so you can run `npm install`, `npm run build`, and catch errors locally before pushing.
 
 Optional but recommended:
@@ -127,8 +127,8 @@ Environment variables are **not retroactive** — old deployments keep their sna
 ## Step 5: Connect the custom domain
 
 1. Inside Vercel, open **Settings → Domains**.
-2. Click **Add**, enter **`michaelangelo-digital.co.uk`**, confirm.
-3. Add **`www.michaelangelo-digital.co.uk`** as well (repeat **Add**).
+2. Click **Add**, enter **`clophy.com`**, confirm.
+3. Add **`www.clophy.com`** as well (repeat **Add**).
 4. Vercel shows DNS targets — note:
    - **A record** IPv4 address(es) for the **apex** (`@`).
    - **CNAME** target for **`www`** subdomain (often `cname.vercel-dns.com` — copy exactly what Vercel prints).
@@ -152,7 +152,7 @@ Environment variables are **not retroactive** — old deployments keep their sna
 
 Verify **each** item after DNS resolves:
 
-1. **Homepage loads** at `https://www.michaelangelo-digital.co.uk/` without console errors (open DevTools → Console).
+1. **Homepage loads** at `https://www.clophy.com/` without console errors (open DevTools → Console).
 2. **Calendly** renders inside `/contact` and `/book` — you should see time-slot UI, not a blank iframe.
 3. **YouTube grid** on `/content` shows six videos **when `YOUTUBE_API_KEY` is set** in Vercel and redeployed.
 4. **Contact form** submits successfully **after** `N8N_CONTACT_WEBHOOK_URL` is set in Vercel and redeployed — confirm your n8n workflow receives the payload.

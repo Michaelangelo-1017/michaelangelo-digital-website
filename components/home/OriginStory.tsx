@@ -52,7 +52,7 @@ export function OriginStory() {
               At some point I stopped and thought, if I am spending this much time just keeping up with the admin, how much am I actually losing? How many messages had gone unanswered for too long? How many potential customers had moved on because I was too slow?
               </motion.p>
               <motion.p variants={fadeUp}>
-              That question is what led to Michaelangelo Digital. Because when I looked around, I realised I was not the only one doing this. Most small business owners are running their companies the same way, buried in the repetitive stuff, doing manually what could easily be done automatically, and losing time and money because of it.
+              That question is what led to Clophy. Because when I looked around, I realised I was not the only one doing this. Most small business owners are running their companies the same way, buried in the repetitive stuff, doing manually what could easily be done automatically, and losing time and money because of it.
               </motion.p>
               <motion.p variants={fadeUp} className="text-white">
               We build the systems that fix that. The ones that handle the enquiries, the follow-ups, and the admin, so that the people running these businesses can get back to the work they actually started the business to do.
@@ -68,7 +68,7 @@ export function OriginStory() {
             <ImageReveal className="rounded-3xl border-2 border-amber-500 aspect-[4/5] bg-navy/40">
               <Image
                 src="/images/founder.jpg"
-                alt="Michaelangelo Agbodike, founder of Michaelangelo Digital"
+                alt="Michaelangelo Agbodike, founder of Clophy"
                 fill
                 className="object-cover object-center rounded-3xl"
                 sizes="(max-width: 1024px) 100vw, 38vw"

@@ -8,7 +8,7 @@ type LogoProps = {
 };
 
 /**
- * Text-based wordmark for Michaelangelo Digital.
+ * Text-based wordmark for Clophy.
  *
  * Replace this component's internals (or the rendered children) with
  * an <Image /> tag pointing at a real logo file when ready. The colour
@@ -25,11 +25,7 @@ export function Logo({ variant = "dark", className, href = "/" }: LogoProps) {
         className,
       )}
     >
-      <span className="text-xl sm:text-[1.35rem]">Michaelangelo</span>
-      <span className="text-amber">.</span>
-      <span className="text-xl sm:text-[1.35rem]">
-        Digital
-      </span>
+      <span className="text-xl sm:text-[1.35rem]">Clophy</span>
     </span>
   );
 
@@ -38,7 +34,7 @@ export function Logo({ variant = "dark", className, href = "/" }: LogoProps) {
   return (
     <Link
       href={href}
-      aria-label="Michaelangelo Digital — Home"
+      aria-label="Clophy — Home"
       className="inline-flex items-center"
     >
       {content}
