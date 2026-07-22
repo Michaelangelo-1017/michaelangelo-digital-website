@@ -40,7 +40,7 @@ export const FOOTER_GROUPS: { heading: string; links: NavLink[] }[] = [
     links: [
       {
         label: "YouTube channel",
-        href: "https://www.youtube.com/@MichaelangeloBuilds",
+        href: "https://www.youtube.com/@thefounderline",
       },
       {
         label: "LinkedIn profile",
