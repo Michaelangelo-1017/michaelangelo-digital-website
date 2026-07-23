@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { Container } from "@/components/shared/Container";
 import { SectionTitle } from "@/components/shared/SectionTitle";
@@ -21,33 +22,67 @@ const ITEMS: Item[] = [
   ...FUTURE_MILESTONES.map((m) => ({ kind: "future" as const, ...m })),
 ];
 
-// Row pixel heights (also used as viewBox y-units so SVG path math is 1:1 with layout)
-const ROW_DT = 220;
-const TAIL_DT = 220;
+// Layout + SVG share the same Y units so nodes and the stroke stay aligned.
+const ROW_H = 220;
+const TAIL_H = 220;
+const SVG_W = 1000;
+const LEFT_X = SVG_W * 0.32;
+const RIGHT_X = SVG_W * 0.68;
+const CENTER_X = SVG_W * 0.5;
 
-const DT_HEIGHT = ITEMS.length * ROW_DT + TAIL_DT;
+const DT_HEIGHT = ITEMS.length * ROW_H + TAIL_H;
+const COMPLETED_COUNT = COMPLETED_MILESTONES.length;
 
-// Desktop path: alternating S-curve through left (x=32) and right (x=68) points
-function buildDesktopPath(): string {
-  const points = ITEMS.map((_, i) => ({
-    x: i % 2 === 0 ? 32 : 68,
-    y: i * ROW_DT + ROW_DT / 2,
+function nodeX(index: number) {
+  return index % 2 === 0 ? LEFT_X : RIGHT_X;
+}
+
+function nodeY(index: number) {
+  return index * ROW_H + ROW_H / 2;
+}
+
+/**
+ * Build an S-curve through every completed milestone, then ease toward
+ * the first future node and stop short of it. Futures are never on the path.
+ *
+ * Uses a wide viewBox (1000×height) so X/Y scales stay reasonable — Framer's
+ * pathLength on a 100×tall viewBox with preserveAspectRatio="none" was
+ * clipping the stroke early.
+ */
+function buildCompletedPath(): string {
+  if (COMPLETED_COUNT === 0) return "";
+
+  const points = Array.from({ length: COMPLETED_COUNT }, (_, i) => ({
+    x: nodeX(i),
+    y: nodeY(i),
   }));
-  const startY = 0;
-  const startX = 50;
-  let d = `M ${startX} ${startY}`;
-  d += ` C ${startX} ${ROW_DT * 0.3}, ${points[0].x} ${points[0].y - ROW_DT * 0.3}, ${points[0].x} ${points[0].y}`;
+
+  const first = points[0];
+  let d = `M ${CENTER_X} 0`;
+  d += ` C ${CENTER_X} ${ROW_H * 0.35}, ${first.x} ${first.y - ROW_H * 0.35}, ${first.x} ${first.y}`;
+
   for (let i = 1; i < points.length; i++) {
     const a = points[i - 1];
     const b = points[i];
-    d += ` C ${a.x} ${a.y + ROW_DT * 0.5}, ${b.x} ${b.y - ROW_DT * 0.5}, ${b.x} ${b.y}`;
+    const midY = (a.y + b.y) / 2;
+    // Keep control points on each column so the curve always hits each node.
+    d += ` C ${a.x} ${midY}, ${b.x} ${midY}, ${b.x} ${b.y}`;
   }
+
   const last = points[points.length - 1];
-  d += ` C ${last.x} ${last.y + ROW_DT * 0.5}, ${startX} ${last.y + TAIL_DT * 0.5}, ${startX} ${last.y + TAIL_DT * 0.85}`;
+
+  if (FUTURE_MILESTONES.length > 0) {
+    const next = { x: nodeX(COMPLETED_COUNT), y: nodeY(COMPLETED_COUNT) };
+    const endX = last.x + (next.x - last.x) * 0.4;
+    const endY = last.y + (next.y - last.y) * 0.4;
+    const midY = (last.y + endY) / 2;
+    d += ` C ${last.x} ${midY}, ${endX} ${midY}, ${endX} ${endY}`;
+  } else {
+    d += ` C ${last.x} ${last.y + ROW_H * 0.4}, ${CENTER_X} ${last.y + TAIL_H * 0.55}, ${CENTER_X} ${last.y + TAIL_H * 0.85}`;
+  }
+
   return d;
 }
-
-const DESKTOP_PATH = buildDesktopPath();
 
 function CompletedMarker() {
   return (
@@ -127,6 +162,8 @@ function JourneyContinues() {
 }
 
 function DesktopTimeline() {
+  const pathD = useMemo(() => buildCompletedPath(), []);
+
   return (
     <div
       className="relative mx-auto max-w-5xl"
@@ -134,28 +171,31 @@ function DesktopTimeline() {
       aria-label="Clophy milestones timeline"
     >
       <svg
-        className="absolute inset-0 w-full h-full"
-        viewBox={`0 0 100 ${DT_HEIGHT}`}
+        className="pointer-events-none absolute inset-0 h-full w-full"
+        viewBox={`0 0 ${SVG_W} ${DT_HEIGHT}`}
         preserveAspectRatio="none"
         aria-hidden="true"
       >
-        <motion.path
-          d={DESKTOP_PATH}
-          stroke="#1B2E5E"
-          strokeWidth={7}
-          strokeLinecap="round"
-          fill="none"
-          vectorEffect="non-scaling-stroke"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          viewport={VIEWPORT_ONCE}
-          transition={{ duration: 2, ease: [0.22, 1, 0.36, 1] }}
-        />
+        {pathD ? (
+          <motion.path
+            d={pathD}
+            stroke="#1B2E5E"
+            strokeWidth={8}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            fill="none"
+            vectorEffect="non-scaling-stroke"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={VIEWPORT_ONCE}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          />
+        ) : null}
       </svg>
 
       {ITEMS.map((item, i) => {
         const isLeft = i % 2 === 0;
-        const y = i * ROW_DT + ROW_DT / 2;
+        const y = nodeY(i);
         return (
           <div
             key={item.id}
@@ -191,13 +231,13 @@ function DesktopTimeline() {
       <motion.div
         className="absolute left-0 right-0 text-center"
         style={{
-          top: `${ITEMS.length * ROW_DT + TAIL_DT * 0.9}px`,
+          top: `${ITEMS.length * ROW_H + TAIL_H * 0.9}px`,
           transform: "translateY(-50%)",
         }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={VIEWPORT_ONCE}
-        transition={{ duration: 0.8, delay: 1.6 }}
+        transition={{ duration: 0.8, delay: 0.4 }}
       >
         <JourneyContinues />
       </motion.div>

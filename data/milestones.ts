@@ -93,11 +93,23 @@ export const COMPLETED_MILESTONES: CompletedMilestone[] = [
     title: "First Website Built for a Client",
     description: "A second service line launched.",
   },
+  {
+    id: "second-automation-install",
+    date: "6 June 2026",
+    shortDate: "Jun 6, 2026",
+    title: "2nd Automation System Install",
+    description: "The system went live for a second real client.",
+  },
+  {
+    id: "tier-1-completed",
+    date: "9 July 2026",
+    shortDate: "Jul 9, 2026",
+    title: "First 3 System Installs Completed",
+    description: "Another system installed for a third client.",
+  },
 ];
 
 export const FUTURE_MILESTONES: FutureMilestone[] = [
-  { id: "second-automation-install", title: "2nd Automation System Install" },
-  { id: "tier-1-completed", title: "First 3 System Installs Completed" },
   { id: "tier-2-completed", title: "System Installs 4 to 7 Completed" },
   { id: "tier-3-completed", title: "System Installs 8 to 10 Completed" },
   { id: "yt-1k", title: "First 1K YouTube Subscribers" },
